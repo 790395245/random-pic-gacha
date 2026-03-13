@@ -3,6 +3,7 @@ import { Button, Popconfirm } from 'antd';
 import { Trash2, EyeOff, Eye } from 'lucide-react';
 import CardDisplay from './CardDisplay';
 import { CardItem } from '../types';
+import { getNSFWBlurSetting } from '../lib/utils';
 
 interface CollectionItemProps {
   item?: CardItem;
@@ -23,7 +24,7 @@ const CollectionItem: React.FC<CollectionItemProps> = ({
   onDelete = () => {},
   viewMode = 'large'
 }) => {
-  const [isBlurred, setIsBlurred] = useState<boolean>(item.isR18);
+  const [isBlurred, setIsBlurred] = useState<boolean>(item.isR18 && getNSFWBlurSetting());
   const dateStr = new Date(item.timestamp).toLocaleString();
 
   if (viewMode === 'list') {

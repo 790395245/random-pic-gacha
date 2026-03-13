@@ -4,6 +4,7 @@ import { Sparkles, RefreshCw, Settings, EyeOff, Eye } from 'lucide-react';
 import CardDisplay from '../components/CardDisplay';
 import RatingPanel from '../components/RatingPanel';
 import { Rarity, CardItem } from '../types';
+import { getNSFWBlurSetting, setNSFWBlurSetting } from '../lib/utils';
 
 const Home: React.FC = () => {
   const [currentImage, setCurrentImage] = useState<string>('');
@@ -15,6 +16,7 @@ const Home: React.FC = () => {
   const [ratedRarity, setRatedRarity] = useState<Rarity | ''>('');
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
   const [isBlurred, setIsBlurred] = useState<boolean>(false);
+  const [nsfwBlurEnabled, setNsfwBlurEnabled] = useState<boolean>(getNSFWBlurSetting());
 
   const handleRoll = async () => {
     setHasRolled(false);
@@ -36,7 +38,7 @@ const Home: React.FC = () => {
           : imageData.pictureUrl;
         setCurrentImage(imageUrl);
         setCurrentMetadata(imageData);
-        setIsBlurred(isR18);
+        setIsBlurred(isR18 && nsfwBlurEnabled);
         setHasRolled(true);
         message.success('抽卡成功！请为这张卡片评级');
       } else {
@@ -104,6 +106,18 @@ const Home: React.FC = () => {
         open={drawerOpen}
       >
         <div className="flex flex-col gap-6">
+          <div>
+            <div className="mb-2 font-medium text-gray-700">NSFW 自动隐藏</div>
+            <Switch
+              checked={nsfwBlurEnabled}
+              onChange={(checked) => {
+                setNsfwBlurEnabled(checked);
+                setNSFWBlurSetting(checked);
+              }}
+              checkedChildren="开启"
+              unCheckedChildren="关闭"
+            />
+          </div>
           <div>
             <div className="mb-2 font-medium text-gray-700">平台选择</div>
             <Radio.Group value={platform} onChange={(e) => setPlatform(e.target.value)} disabled={isRolling}>
