@@ -31,6 +31,9 @@
 4. 添加错误处理
 5. 遵循最小化修改原则
 
+2026-03-13 最新指令（第六批）：
+帮我给这个项目部署gitea的自动化流水线，让我每次提交之后gitea的runner可以自动build，并把dist部署到/var/www/html/setu/dist
+
 用户私有指令：
 - 始终用中文回复
 - 执行前记录指令到ai-record.txt

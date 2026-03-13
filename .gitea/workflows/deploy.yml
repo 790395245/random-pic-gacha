@@ -1,0 +1,35 @@
+name: 构建并部署
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 设置 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 配置 npm 镜像源
+        run: npm config set registry https://registry.npmmirror.com
+
+      - name: 安装依赖
+        run: npm install
+
+      - name: 构建项目
+        run: npm run build
+
+      - name: 部署到服务器
+        run: |
+          sudo mkdir -p /var/www/html/setu
+          sudo rm -rf /var/www/html/setu/dist
+          sudo cp -r dist /var/www/html/setu/
+          sudo chmod -R 755 /var/www/html/setu/dist
