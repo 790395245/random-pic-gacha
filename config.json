@@ -1,0 +1,18 @@
+{
+  "routes": [
+    {
+      "path": "/",
+      "src": "src/pages/Home.tsx"
+    },
+    {
+      "path": "/collection",
+      "src": "src/pages/Collection.tsx"
+    }
+  ],
+  "components": [
+    {"name": "Header", "src": "src/components/Header.tsx"},
+    {"name": "CardDisplay", "src": "src/components/CardDisplay.tsx"},
+    {"name": "RatingPanel", "src": "src/components/RatingPanel.tsx"},
+    {"name": "CollectionItem", "src": "src/components/CollectionItem.tsx"}
+  ]
+}

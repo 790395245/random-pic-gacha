@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .hidden-node {
+    display: none !important;
+  }
+  
+  .visible-node {
+    display: block;
+  }
+}
+
+/* Base effect class for image cards */
+.gacha-card-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+/* N Level - Gray */
+.effect-n {
+  border: 6px solid #808080;
+  box-shadow: 0 0 20px rgba(128, 128, 128, 0.6);
+  animation: glow-n 2s ease-in-out infinite;
+}
+
+@keyframes glow-n {
+  0%, 100% { box-shadow: 0 0 20px rgba(128, 128, 128, 0.6); }
+  50% { box-shadow: 0 0 35px rgba(128, 128, 128, 0.9); }
+}
+
+/* R Level - Blue */
+.effect-r {
+  border: 6px solid #4169E1;
+  box-shadow: 0 0 25px rgba(65, 105, 225, 0.7);
+  animation: glow-r 1.8s ease-in-out infinite;
+}
+
+@keyframes glow-r {
+  0%, 100% { box-shadow: 0 0 25px rgba(65, 105, 225, 0.7); }
+  50% { box-shadow: 0 0 40px rgba(65, 105, 225, 1); }
+}
+
+/* SR Level - Purple */
+.effect-sr {
+  border: 6px solid #9370DB;
+  box-shadow: 0 0 30px rgba(147, 112, 219, 0.8);
+  animation: glow-sr 1.6s ease-in-out infinite;
+}
+
+@keyframes glow-sr {
+  0%, 100% { box-shadow: 0 0 30px rgba(147, 112, 219, 0.8); }
+  50% { box-shadow: 0 0 50px rgba(147, 112, 219, 1); }
+}
+
+/* SSR Level - Gold */
+.effect-ssr {
+  border: 7px solid #FFD700;
+  box-shadow: 0 0 35px rgba(255, 215, 0, 0.9);
+  animation: glow-ssr 1.4s ease-in-out infinite;
+}
+
+@keyframes glow-ssr {
+  0%, 100% { box-shadow: 0 0 35px rgba(255, 215, 0, 0.9); }
+  50% { box-shadow: 0 0 60px rgba(255, 215, 0, 1), 0 0 30px rgba(255, 193, 7, 0.8); }
+}
+
+/* UR Level - Red */
+.effect-ur {
+  border: 8px solid #FF4500;
+  box-shadow: 0 0 40px rgba(255, 69, 0, 1);
+  animation: glow-ur 1s ease-in-out infinite;
+}
+
+@keyframes glow-ur {
+  0%, 100% { box-shadow: 0 0 40px rgba(255, 69, 0, 1); }
+  50% { box-shadow: 0 0 70px rgba(255, 69, 0, 1), 0 0 35px rgba(255, 99, 71, 0.9); }
+}
